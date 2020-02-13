@@ -29,7 +29,7 @@
     <?php if(!empty($_GET)) { ?>
       <p>Parkeertijd uren: <?php echo totalHours(); ?></p>
       <p>Parkeertijd minuten: <?php echo totalMinutes(); ?></p>
-      <p>Parkeertarief:  <?php echo calculatePrice(); ?></p>
+      <p>Parkeertarief: <?php echo calculatePrice(); ?></p>
       <br>
       <p><b>Te betalen<b></p>
       <p>Duur tarief: <?php if (totalHours() >= 1) { echoCalculation(); } else { calculatePrice(); }   ?></p>
