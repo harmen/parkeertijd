@@ -25,16 +25,23 @@
       </table>
       <input type="submit" value="Bereken">
     </form>
-    <?php echo roundTime(); ?>
     <?php if(!empty($_GET)) { ?>
       <p>Parkeertijd uren: <?php echo totalHours(); ?></p>
       <p>Parkeertijd minuten: <?php echo totalMinutes(); ?></p>
       <p>Parkeertarief:  <?php echo calculatePrice(); ?></p>
       <br>
+      <?php echo totalHours(); ?>
       <p><b>Te betalen<b></p>
-      <p>Duur tarief: <?php if (totalHours() >= 1) { echoCalculation(); } else { calculatePrice(); }   ?></p>
-      <p>Normaal tarief: </p>
-      <p>Totaal: </p>
+      <p>Duur tarief: <?php if(calculateExpLow() == 1.5) { $exp = echoCalculation(); echo $exp; } ?></p>
+      <p>Normaal tarief: <?php if(calculateExpLow() != 1.5) { $low = echoCalculation(); echo $low; } else { echo 0; }  ?></p>
+      <p>Totaal: 
+        <?php if(calculateExpLow() == 1.5  && calculateExpLow() != 1.5) 
+        { echo $exp * $low; } 
+        elseif(calculateExpLow() != 1.5) 
+        { echo $low; } 
+        elseif(calculateExpLow() == 1.5) 
+        { echo $exp; } 
+        ?></p>
     <?php } ?>
   </body>
 </html>

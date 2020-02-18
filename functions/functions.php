@@ -36,12 +36,6 @@
     );
   }
 
-  function calculateExpPrice() {
-    if (roundTime(beginTime()) >= "08:00" && totalHours() <= "10:00") {
-      echo "hoi";
-    }
-  }
-
   function roundTime() {
     return ceil(gmdate("h.i", calculateTotal()));
   }
@@ -60,7 +54,7 @@
 
   function calculateExpLow() {
     $begin_time = beginTime();
-    if ($begin_time < gmdate("h:i", "18:00")) {
+    if ($begin_time <= "18:00") {
       return 1.5;
     }
   }
@@ -88,7 +82,15 @@
   }
 
   function echoCalculation() {
-    return totalHours() * calculatePrice() * calculateExpLow();
+    if (totalHours() >= 1) {
+      return totalHours() * calculatePrice();
+    } else {
+      return calculatePrice();
+    }
+  }
+
+  function returnTotal() {
+    viewPrice();
   }
 
 ?>
